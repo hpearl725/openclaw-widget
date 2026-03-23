@@ -6,7 +6,7 @@ An Electron-based desktop widget for OpenClaw — always-on-top, always-visible.
 - Live status display (current task with typewriter animation)
 - Task list with subtasks, drag-to-reorder, arm-to-delete, undo
 - Inline weather with °F/°C toggle
-- Rooney's scheduled tasks (OpenClaw cron jobs)
+- your open claws scheduled tasks (OpenClaw cron jobs)
 - Telegram event notifications via OpenClaw gateway
 
 ## Setup
