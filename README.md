@@ -5,10 +5,9 @@ An Electron-based desktop widget for OpenClaw — always-on-top, always-visible.
 ## Features
 - Live status display (current task with typewriter animation)
 - Task list with subtasks, drag-to-reorder, arm-to-delete, undo
-- Inline weather (Culver City) with °F/°C toggle
+- Inline weather with °F/°C toggle
 - Rooney's scheduled tasks (OpenClaw cron jobs)
 - Telegram event notifications via OpenClaw gateway
-- USC color theme 🎓
 
 ## Setup
 ```bash
