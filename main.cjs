@@ -29,6 +29,15 @@ app.whenReady().then(() => {
   win.loadFile(path.join(__dirname, 'index.html'));
   win.setAlwaysOnTop(true, 'screen-saver');
 
+  ipcMain.handle('get-identity', () => {
+    const f = path.join(WORKSPACE, 'IDENTITY.md');
+    if (!fs.existsSync(f)) return { name: 'ROONEY', emoji: '🐶' };
+    const text = fs.readFileSync(f, 'utf8').replace(/^\uFEFF/,'');
+    const name = (text.match(/\*\*Name:\*\*\s*(.+)/i) || [])[1]?.trim() || 'ROONEY';
+    const emoji = (text.match(/\*\*Emoji:\*\*\s*(.+)/i) || [])[1]?.trim() || '';
+    return { name: name.toUpperCase(), emoji };
+  });
+
   ipcMain.handle('read-status', () => {
     const f = path.join(WORKSPACE, 'rooney-status.txt');
     return fs.existsSync(f) ? fs.readFileSync(f,'utf8').replace(/^\uFEFF/,'').trim() : 'IDLE';

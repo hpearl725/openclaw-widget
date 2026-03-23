@@ -574,7 +574,7 @@ html, body {
     <div id="accent-bar"></div>
     <div id="header">
       <div id="dot" title="Click to minimize"></div>
-      <span id="title">ROONEY</span>
+      <span id="title">...</span>
       <div id="header-right">
         <span id="uptime">GW: ?</span>
         <button class="hbtn" id="snap-btn" title="Snap to corner">⌖</button>
@@ -613,7 +613,7 @@ html, body {
   <!-- RIGHT -->
   <div id="right">
     <div class="right-section" style="padding-bottom:4px">
-      <div class="right-label">ROONEY'S TASKS</div>
+      <div class="right-label" id="tasks-label">TASKS</div>
     </div>
     <div id="cron-list"></div>
   </div>
@@ -1134,6 +1134,20 @@ setInterval(renderClock,1000);
 setInterval(()=>renderCrons(),60000);
 
 (async()=>{
+  // Load identity from IDENTITY.md
+  try {
+    const identity = await window.rooney.getIdentity();
+    if (identity?.name) {
+      const titleEl = document.getElementById('title');
+      const tasksLabelEl = document.getElementById('tasks-label');
+      if (titleEl) titleEl.textContent = identity.name;
+      if (tasksLabelEl) tasksLabelEl.textContent = identity.name + "'S TASKS";
+      document.title = identity.name.charAt(0) + identity.name.slice(1).toLowerCase();
+    }
+  } catch(e) {
+    const titleEl = document.getElementById('title');
+    if (titleEl) titleEl.textContent = 'ROONEY';
+  }
   await loadTasks();
   renderTasks();
   await loadWeather();

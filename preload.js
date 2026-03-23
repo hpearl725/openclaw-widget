@@ -1,5 +1,6 @@
 const { contextBridge, ipcRenderer } = require("electron");
 contextBridge.exposeInMainWorld("rooney", {
+  getIdentity:       ()      => ipcRenderer.invoke("get-identity"),
   readStatus:        ()      => ipcRenderer.invoke("read-status"),
   readTasks:         ()      => ipcRenderer.invoke("read-tasks"),
   writeTasks:        data    => ipcRenderer.invoke("write-tasks", data),
