@@ -1,4 +1,4 @@
-# Rooney Widget
+# Openclaw Widget
 
 An Electron-based desktop widget for OpenClaw — always-on-top, always-visible.
 
